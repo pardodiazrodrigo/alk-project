@@ -1,0 +1,6 @@
+request
+psycopg2
+python-decouple
+pandas
+SQLAlchemy
+SQLAlchemy-Utils
