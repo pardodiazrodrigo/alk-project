@@ -5,6 +5,10 @@
 
 pip install -r requeriments.txt 
 
+# Settings
+
+The necessary configurations can be done from the .env file
+
 # Run
 
 Inside the app, run the following command
