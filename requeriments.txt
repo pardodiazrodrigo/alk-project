@@ -1,6 +1,6 @@
-request
-psycopg2
-python-decouple
-pandas
-SQLAlchemy
-SQLAlchemy-Utils
+requests==2.28.1
+psycopg2==2.9.3
+python-decouple==3.6
+pandas==1.4.4
+SQLAlchemy==1.4.41
+SQLAlchemy-Utils==0.38.3
