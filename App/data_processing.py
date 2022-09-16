@@ -43,10 +43,7 @@ def normalize_bibliotecas(path) -> pd.DataFrame:
 
 def normalize_cines(path) -> pd.DataFrame:
 
-    df = pd.read_csv(path, encoding='UTF-8', header=None)
-    headers_list = df.iloc[258]
-    df.columns = headers_list
-
+    df = pd.read_csv(path, encoding='UTF-8')
     df.rename(columns={'Cod_Loc': 'cod_localidad', 'IdProvincia': 'id_provincia',
                        'IdDepartamento': 'id_departamento', 'Categoría': 'categoría',
                        'Provincia': 'provincia', 'Localidad': 'localidad', 'Nombre': 'nombre', 'Fuente': 'fuente',
@@ -56,8 +53,6 @@ def normalize_cines(path) -> pd.DataFrame:
     df.drop(['Observaciones', 'Departamento', 'Piso', 'cod_area', 'Información adicional',
              'Latitud', 'Longitud', 'TipoLatitudLongitud', 'tipo_gestion', 'Pantallas',
              'Butacas', 'espacio_INCAA', 'año_actualizacion'], axis=1, inplace=True)
-
-    df.drop([258], axis='index', inplace=True)
 
     return df
 
@@ -96,11 +91,7 @@ def qty_records_provincia_categoria(df: pd.DataFrame) -> pd.DataFrame:
 
 def processing_cines(path) -> pd.DataFrame:
 
-    df_cines = pd.read_csv(path, encoding='UTF-8', header=None)
-
-    headers_list = df_cines.iloc[258]
-    df_cines.drop([258], axis='index', inplace=True)
-    df_cines.columns = headers_list
+    df_cines = pd.read_csv(path, encoding='UTF-8')
     df_cines = df_cines.loc[:, ['Provincia', 'Pantallas', 'Butacas', 'espacio_INCAA']]
 
     df_cines['espacio_INCAA'].replace(to_replace='SI', value=True, inplace=True)
