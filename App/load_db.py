@@ -47,7 +47,7 @@ def update_database(db_location: str, df: pandas.DataFrame, table_name: str) -> 
                   dtype={'cod_localidad': sqlalchemy.types.INTEGER(),
                          'id_provincia': sqlalchemy.types.INTEGER(),
                          'id_departamento': sqlalchemy.types.INTEGER(),
-                         'categoria': sqlalchemy.types.VARCHAR(length=255),
+                         'categoría': sqlalchemy.types.VARCHAR(length=255),
                          'provincia': sqlalchemy.types.VARCHAR(length=255),
                          'localidad': sqlalchemy.types.VARCHAR(length=255),
                          'nombre': sqlalchemy.types.VARCHAR(length=255),
@@ -59,6 +59,9 @@ def update_database(db_location: str, df: pandas.DataFrame, table_name: str) -> 
                          'fecha_de_carga': sqlalchemy.types.Date(),
                          'cantidad': sqlalchemy.types.INTEGER(),
                          'fuente': sqlalchemy.types.VARCHAR(length=255),
+                         'cant_pantallas': sqlalchemy.types.INTEGER(),
+                         'cant_butacas': sqlalchemy.types.INTEGER(),
+                         'cant_espacios_incaa': sqlalchemy.types.INTEGER(),
                          }
                   )
     except exc.SQLAlchemyError as e:
