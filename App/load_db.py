@@ -43,6 +43,23 @@ def update_database(db_location: str, df: pandas.DataFrame, table_name: str) -> 
     df['fecha_de_carga'] = date.today().strftime("%d-%m-%Y")
 
     try:
-        df.to_sql(table_name, get_engine(db_location), if_exists='replace', index=False)
+        df.to_sql(table_name, get_engine(db_location), if_exists='replace', index=False,
+                  dtype={'cod_localidad': sqlalchemy.types.INTEGER(),
+                         'id_provincia': sqlalchemy.types.INTEGER(),
+                         'id_departamento': sqlalchemy.types.INTEGER(),
+                         'categoria': sqlalchemy.types.VARCHAR(length=255),
+                         'provincia': sqlalchemy.types.VARCHAR(length=255),
+                         'localidad': sqlalchemy.types.VARCHAR(length=255),
+                         'nombre': sqlalchemy.types.VARCHAR(length=255),
+                         'domicilio': sqlalchemy.types.VARCHAR(length=255),
+                         'código postal': sqlalchemy.types.VARCHAR(length=255),
+                         'número de teléfono': sqlalchemy.types.VARCHAR(length=255),
+                         'mail': sqlalchemy.types.VARCHAR(length=255),
+                         'web': sqlalchemy.types.VARCHAR(length=255),
+                         'fecha_de_carga': sqlalchemy.types.Date(),
+                         'cantidad': sqlalchemy.types.INTEGER(),
+                         'fuente': sqlalchemy.types.VARCHAR(length=255),
+                         }
+                  )
     except exc.SQLAlchemyError as e:
         print(e)
